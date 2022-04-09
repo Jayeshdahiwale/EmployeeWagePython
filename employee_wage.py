@@ -10,6 +10,7 @@ import random
 
 
 class Employee:
+
     def __init__(self):
         self.wage_per_hour = 20
         self.full_day_hour = 8
@@ -17,8 +18,17 @@ class Employee:
         self.days_of_month = 20
         self.attendance = random.randint(0, 2)
         self.daily_wage = 0
+        self.max_working_hours = 0;
 
     def check_attendance(self):
+        if self.attendance == 0:
+            print("The employee is absent")
+        elif self.attendance == 1:
+            print("The full time employee is present")
+        else:
+            print("The part time employee is present")
+
+    def daily_hours(self):
         if self.attendance == 0:
             return 0
         elif self.attendance == 1:
@@ -38,28 +48,29 @@ class Employee:
         return daily_wage
 
     def monthly_emp_wage(self):
-        max_working_hours = 0
+        self.max_working_hours
         max_working_days = 0
         monthly_wage = 0
-        while max_working_hours < 100 or max_working_days < 19:
+        while self.max_working_hours < 100 and max_working_days < 19:
             employee_temp = Employee()
-            max_working_hours += employee_temp.check_attendance()
-            if max_working_hours == 104:
-                max_working_hours = 96
-                continue
-            elif max_working_hours == 108:
-                max_working_hours = 92
+            self.max_working_hours += employee_temp.daily_hours()
+            if self.max_working_hours == 104:
+                self.max_working_hours = 96
                 continue
             max_working_days += 1
-            if employee_temp.check_attendance() == 0:
+            if employee_temp.daily_hours() == 0:
                 max_working_days -= 1
             monthly_wage += employee_temp.daily_emp_wage()
         print(f"The total monthly wage is Rs.{monthly_wage}.")
         print(f"The total work days is {max_working_days}.")
-        print(f"The total working hours is Rs.{max_working_hours}.")
+        print(f"The total working hours is Rs.{self.max_working_hours}.")
         return monthly_wage
+
+    def get_total_hours(self):
+        return self.max_working_hours
 
 
 print("Welcome to EmployeeWage computation program")
 employee = Employee()
 employee.monthly_emp_wage()
+print(employee.max_working_hours)

@@ -19,6 +19,7 @@ class Employee:
         self.attendance = random.randint(0, 2)
         self.daily_wage = 0
         self.max_working_hours = 0;
+        self.daily_wage_log = []
 
     def check_attendance(self):
         if self.attendance == 0:
@@ -51,15 +52,14 @@ class Employee:
         self.max_working_hours
         max_working_days = 0
         monthly_wage = 0
-        while self.max_working_hours < 100 and max_working_days < 19:
+        while self.max_working_hours < 100 and max_working_days <= 19:
             employee_temp = Employee()
             self.max_working_hours += employee_temp.daily_hours()
             if self.max_working_hours == 104:
                 self.max_working_hours = 96
                 continue
             max_working_days += 1
-            if employee_temp.daily_hours() == 0:
-                max_working_days -= 1
+            self.daily_wage_log.append(employee_temp.daily_emp_wage())
             monthly_wage += employee_temp.daily_emp_wage()
         print(f"The total monthly wage is Rs.{monthly_wage}.")
         print(f"The total work days is {max_working_days}.")
@@ -69,8 +69,12 @@ class Employee:
     def get_total_hours(self):
         return self.max_working_hours
 
+    def get_daily_wage_log(self):
+        return self.daily_wage_log
+
 
 print("Welcome to EmployeeWage computation program")
 employee = Employee()
 employee.monthly_emp_wage()
 print(employee.max_working_hours)
+print(employee.daily_wage_log)

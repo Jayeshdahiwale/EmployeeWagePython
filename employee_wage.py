@@ -13,16 +13,25 @@ class Employee:
     def __init__(self):
         self.wage_per_hour = 20;
         self.full_day_hour = 8;
+        self.part_time_hour = 4;
+        self.attendance = random.randint(0, 2)
 
     def check_attendance(self):
-        attendance = random.randint(0, 1)
-        if attendance == 0:
+        if self.attendance == 0:
+            print("Employee is absent")
+        elif self.attendance == 1:
             print("Employee is present")
         else:
-            print("Employee is absent")
+            print("Part time employee is present")
 
     def daily_emp_wage(self):
-        daily_wage = self.wage_per_hour * self.full_day_hour
+        if self.attendance == 0:
+            daily_wage = 0
+        elif self.attendance == 1:
+            daily_wage = self.wage_per_hour * self.full_day_hour
+        else:
+            daily_wage = self.wage_per_hour * self.part_time_hour
+
         print(f"The daily employee wage is Rs.{daily_wage}")
 
 

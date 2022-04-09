@@ -6,8 +6,18 @@
 @Title : EmployeeWage Assignment
 '''
 
+import random
+
 class Employee:
     def __init__(self):
         pass
+    def check_attendance(self):
+        attendance = random.randint(0,1)
+        if attendance == 0:
+            print("Employee is present")
+        else:
+            print("Employee is absent")
 
 print("Welcome to EmployeeWage computation program")
+employee = Employee()
+employee.check_attendance()

@@ -2,7 +2,7 @@
 @Author: Jayesh Dahiwale
 @Date: 2022-04-09 15:10:00
 @Last Modified by: Jayesh Dahiwale
-@Last Modified time: 2022-04-09 15:20:00
+@Last Modified time: 2022-04-09 19:11:00
 @Title : EmployeeWage Assignment
 '''
 
@@ -18,8 +18,9 @@ class Employee:
         self.days_of_month = 20
         self.attendance = random.randint(0, 2)
         self.daily_wage = 0
-        self.max_working_hours = 0;
+        self.max_working_hours = 0
         self.daily_wage_log = []
+        self.day_log = []
 
     def check_attendance(self):
         if self.attendance == 0:
@@ -60,6 +61,7 @@ class Employee:
                 continue
             max_working_days += 1
             self.daily_wage_log.append(employee_temp.daily_emp_wage())
+            self.day_log.append(max_working_days)
             monthly_wage += employee_temp.daily_emp_wage()
         print(f"The total monthly wage is Rs.{monthly_wage}.")
         print(f"The total work days is {max_working_days}.")
@@ -70,11 +72,11 @@ class Employee:
         return self.max_working_hours
 
     def get_daily_wage_log(self):
-        return self.daily_wage_log
+        return dict(zip(self.day_log, self.daily_wage_log))
 
 
 print("Welcome to EmployeeWage computation program")
 employee = Employee()
 employee.monthly_emp_wage()
 print(employee.max_working_hours)
-print(employee.daily_wage_log)
+print(employee.get_daily_wage_log())

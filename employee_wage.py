@@ -12,7 +12,9 @@ import random
 class Employee:
     def __init__(self):
         self.attendance = random.randint(0, 1)
-
+    """
+    Below functions checks whether the employee is present or absent. And print the status
+    """
     def check_attendance(self):
         if self.attendance == 0:
             print("Employee is absent")

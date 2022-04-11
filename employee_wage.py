@@ -22,6 +22,7 @@ class Employee:
         self.time = 0
         self.actual_working_hours = 0
         self.daily_wage_log = []
+        self.day_log = []
 
     """
        Below functions checks whether the employee is present or absent. And print the status
@@ -92,6 +93,7 @@ class Employee:
             self.daily_wage_log.append(employee_temp.check_attendance())
             self.actual_working_hours += employee_temp.time
             day += 1
+            self.day_log.append(day)
             if self.actual_working_hours == 104:
                 self.actual_working_hours = 96
                 continue
@@ -107,7 +109,7 @@ class Employee:
     """ Below function gives the daily_wage_log of employee"""
 
     def get_daily_wage_log(self):
-        print(self.daily_wage_log)
+        print(dict(zip(self.day_log, self.daily_wage_log)))
 
 
 print("Welcome to EmployeeWage computation program")

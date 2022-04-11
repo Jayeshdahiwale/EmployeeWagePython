@@ -106,8 +106,7 @@ class Employee:
     def get_working_hours(self):
         print(f"The total actual working hours are {self.actual_working_hours}")
 
-    """ Below function gives the daily_wage_log of employee"""
-
+    """ Below function gives the daily_wage_log of employee as well as days_log in a dictionary format"""
     def get_daily_wage_log(self):
         print(dict(zip(self.day_log, self.daily_wage_log)))
 

@@ -15,12 +15,17 @@ class Employee:
         self.full_day_hour = 8
         self.attendance = random.randint(0, 1)
 
+    """
+       Below functions checks whether the employee is present or absent. And print the status
+    """
     def check_attendance(self):
         if self.attendance == 0:
             print("Employee is absent")
         else:
             print("Employee is present")
-
+    """
+    Below function  calculates the daily employee wage according to his attendance
+    """
     def daily_emp_wage(self):
         if self.attendance == 0:
             daily_wage = 0

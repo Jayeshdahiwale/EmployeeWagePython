@@ -11,18 +11,21 @@ import random
 
 class Employee:
     def __init__(self):
-        self.wage_per_hour = 20;
-        self.full_day_hour = 8;
+        self.wage_per_hour = 20
+        self.full_day_hour = 8
+        self.attendance = random.randint(0, 1)
 
     def check_attendance(self):
-        attendance = random.randint(0, 1)
-        if attendance == 0:
-            print("Employee is present")
-        else:
+        if self.attendance == 0:
             print("Employee is absent")
+        else:
+            print("Employee is present")
 
     def daily_emp_wage(self):
-        daily_wage = self.wage_per_hour * self.full_day_hour
+        if self.attendance == 0:
+            daily_wage = 0
+        else:
+            daily_wage = self.wage_per_hour * self.full_day_hour
         print(f"The daily employee wage is Rs.{daily_wage}")
 
 

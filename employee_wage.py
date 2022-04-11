@@ -18,6 +18,8 @@ class Employee:
         self.attendance = random.randint(0, 1)
         self.status = random.randint(0, 1)
         self.total_working_days = 20
+        self.total_working_hours = 100
+        self.time = 0
 
     """
        Below functions checks whether the employee is present or absent. And print the status
@@ -65,8 +67,10 @@ class Employee:
     def daily_emp_wage(self):
         if self.status == 0:
             daily_wage = self.wage_per_hour * self.part_time_hour
+            self.time = self.part_time_hour
         else:
             daily_wage = self.wage_per_hour * self.full_day_hour
+            self.time = self.full_day_hour
         print(f"The daily employee wage is Rs.{daily_wage}")
         return daily_wage
 
@@ -76,16 +80,21 @@ class Employee:
 
     def get_monthly_wage(self):
         monthly_wage = 0
+        hours = 0
         day = 1
-        while day <= self.total_working_days:
+        while day < self.total_working_days and hours < 100:
             employee_temp = Employee()
             if employee_temp.attendance == 0:
                 day -= 1
             monthly_wage += employee_temp.check_attendance()
+            hours += employee_temp.time
             day += 1
-        return monthly_wage
+            if hours == 104:
+                hours = 96
+                continue
+        print(f"Total monthly wage is Rs. {monthly_wage}, total working hours is  {hours} and total working days {day}")
 
 
 print("Welcome to EmployeeWage computation program")
 employee = Employee()
-print(employee.get_monthly_wage())
+employee.get_monthly_wage()

@@ -1,8 +1,8 @@
 """
 @Author: Jayesh Dahiwale
-@Date: 2022-04-09 18:00:30
+@Date: 2022-04-09 15:10:00
 @Last Modified by: Jayesh Dahiwale
-@Last Modified time: 2021-02-11 18:00:30
+@Last Modified time: 2022-04-09 19:11:00
 @Title : EmployeeWage Assignment
 """
 
@@ -10,6 +10,7 @@ import random
 
 
 class Employee:
+
     def __init__(self):
         self.attendance = random.randint(0, 1)
     """
@@ -20,7 +21,6 @@ class Employee:
             print("Employee is absent")
         else:
             print("Employee is present")
-
 
 print("Welcome to EmployeeWage computation program")
 employee = Employee()

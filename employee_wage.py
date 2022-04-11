@@ -1,15 +1,16 @@
-'''
+"""
 @Author: Jayesh Dahiwale
 @Date: 2022-04-09 15:10:00
 @Last Modified by: Jayesh Dahiwale
-@Last Modified time: 2022-04-09 15:20:00
+@Last Modified time: 2022-04-09 19:11:00
 @Title : EmployeeWage Assignment
-'''
+"""
 
 import random
 
 
 class Employee:
+
     def __init__(self):
         self.wage_per_hour = 20
         self.full_day_hour = 8
@@ -23,6 +24,7 @@ class Employee:
             print("Employee is absent")
         else:
             print("Employee is present")
+
     """
     Below function  calculates the daily employee wage according to his attendance
     """
@@ -34,7 +36,9 @@ class Employee:
         print(f"The daily employee wage is Rs.{daily_wage}")
 
 
+
 print("Welcome to EmployeeWage computation program")
 employee = Employee()
 employee.check_attendance()
 employee.daily_emp_wage()
+

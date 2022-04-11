@@ -17,6 +17,7 @@ class Employee:
         self.part_time_hour = 4
         self.attendance = random.randint(0, 1)
         self.status = random.randint(0, 1)
+        self.total_working_days = 20
 
     """
        Below functions checks whether the employee is present or absent. And print the status
@@ -25,10 +26,14 @@ class Employee:
     def check_attendance(self):
         print(self.switcher_one(self.attendance))
         if self.attendance == 1:
-            self.check_employee_status()
+            return self.check_employee_status()
+        else:
+            return 0
+
     """
     This is the switch case for checking employee present or not
     """
+
     def switcher_one(self, argument):
         switch = {
             0: "Employee is Absent",
@@ -36,22 +41,23 @@ class Employee:
         }
         return switch.get(argument, "nothing")
 
-
     """
     Below function check whether the full time or part time employee present
     """
 
     def check_employee_status(self):
         print(self.switcher_two(self.status))
-        self.daily_emp_wage()
+        return self.daily_emp_wage()
 
     """Below function is  switch case for checking part time or full time employee present"""
+
     def switcher_two(self, argument):
         switch = {
             0: "Part time employee is present",
             1: "Full time Employee is Present",
         }
         return switch.get(argument, "nothing")
+
     """
     Below function  calculates the daily employee wage according to his attendance
     """
@@ -62,8 +68,24 @@ class Employee:
         else:
             daily_wage = self.wage_per_hour * self.full_day_hour
         print(f"The daily employee wage is Rs.{daily_wage}")
+        return daily_wage
+
+    """
+    Below function calculates the total monthly wage as well as shows everything whether the employee present & absent
+    """
+
+    def get_monthly_wage(self):
+        monthly_wage = 0
+        day = 1
+        while day <= self.total_working_days:
+            employee_temp = Employee()
+            if employee_temp.attendance == 0:
+                day -= 1
+            monthly_wage += employee_temp.check_attendance()
+            day += 1
+        return monthly_wage
 
 
 print("Welcome to EmployeeWage computation program")
 employee = Employee()
-employee.check_attendance()
+print(employee.get_monthly_wage())

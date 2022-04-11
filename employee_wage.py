@@ -20,6 +20,7 @@ class Employee:
         self.total_working_days = 20
         self.total_working_hours = 100
         self.time = 0
+        self.actual_working_hours = 0
 
     """
        Below functions checks whether the employee is present or absent. And print the status
@@ -80,21 +81,28 @@ class Employee:
 
     def get_monthly_wage(self):
         monthly_wage = 0
-        hours = 0
+        self.actual_working_hours = 0
         day = 1
-        while day < self.total_working_days and hours < 100:
+        while day < self.total_working_days and self.actual_working_hours < 100:
             employee_temp = Employee()
             if employee_temp.attendance == 0:
                 day -= 1
             monthly_wage += employee_temp.check_attendance()
-            hours += employee_temp.time
+            self.actual_working_hours += employee_temp.time
             day += 1
-            if hours == 104:
-                hours = 96
+            if self.actual_working_hours == 104:
+                self.actual_working_hours = 96
                 continue
-        print(f"Total monthly wage is Rs. {monthly_wage}, total working hours is  {hours} and total working days {day}")
+        print(
+            f"Total monthly wage is Rs. {monthly_wage}, total working hours is  {self.actual_working_hours} and total "
+            f"working days {day}")
+
+    """This function prints the total hours the employee worked"""
+    def get_working_hours(self):
+        print(f"The total actual working hours are {self.actual_working_hours}")
 
 
 print("Welcome to EmployeeWage computation program")
 employee = Employee()
 employee.get_monthly_wage()
+employee.get_working_hours()
